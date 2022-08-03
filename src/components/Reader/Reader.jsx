@@ -7,45 +7,52 @@ const LS_KEY = 'reader_item_index';
 
 export class Reader extends Component {
   state = {
-    index: 0,
+    publicationIndex: 0,
   };
 
   componentDidMount() {
-    const savedState = localStorage.getItem(LS_KEY);
+    const index = localStorage.getItem(LS_KEY);
 
-    if (savedState) {
-      this.setState({ index: Number(savedState) });
+    if (index !== null) {
+      this.setState({ publicationIndex: Number(index) });
     }
-
-    // const index = Number(localStorage.getItem(LS_KEY));
-    // this.setState({ index });
   }
 
   componentDidUpdate(_, prevState) {
-    if (prevState.index !== this.state.index) {
-      localStorage.setItem(LS_KEY, this.state.index);
+    if (prevState.publicationIndex !== this.state.publicationIndex) {
+      localStorage.setItem(LS_KEY, this.state.publicationIndex);
     }
   }
 
   changeIndex = value => {
-    this.setState(state => ({ index: state.index + value }));
+    this.setState(state => ({
+      publicationIndex: state.publicationIndex + value,
+    }));
   };
 
   render() {
-    const { index } = this.state;
+    const { publicationIndex } = this.state;
     const { items } = this.props;
-    const totalItems = items.length;
-    const currentItem = items[index];
+    const numberOfItems = items.length;
+    const currentItem = items[publicationIndex];
+    const isFirstItem = publicationIndex === 0;
+    const isLastItem = publicationIndex === items.length - 1;
 
     return (
       <div>
         <Controls
-          currentItem={index + 1}
-          totalItems={totalItems}
-          onChange={this.changeIndex}
+          currentItem={publicationIndex + 1}
+          totalItems={numberOfItems}
+          onBack={() => this.changeIndex(-1)}
+          onForward={() => this.changeIndex(1)}
+          prevDisabled={isFirstItem}
+          nextDisabled={isLastItem}
         />
 
-        <Progress currentItem={index + 1} totalItems={totalItems} />
+        <Progress
+          currentItem={publicationIndex + 1}
+          totalItems={numberOfItems}
+        />
 
         <Publication item={currentItem} />
       </div>

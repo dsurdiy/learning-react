@@ -1,18 +1,10 @@
-export const Controls = ({ currentItem, totalItems, onChange }) => {
+export const Controls = ({ onForward, onBack, prevDisabled, nextDisabled }) => {
   return (
     <section>
-      <button
-        type="button"
-        disabled={currentItem === 1}
-        onClick={() => onChange(-1)}
-      >
+      <button type="button" disabled={prevDisabled} onClick={onBack}>
         Назад
       </button>
-      <button
-        type="button"
-        disabled={currentItem === totalItems}
-        onClick={() => onChange(1)}
-      >
+      <button type="button" disabled={nextDisabled} onClick={onForward}>
         Вперед
       </button>
     </section>
