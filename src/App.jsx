@@ -3,8 +3,10 @@
 // import SignupForm from './components/SignupForm/SignupForm';
 // import ColorPicker from './components/ColorPicker/ColorPicker';
 // import Counter from './components/Counter/Counter';
-import Clock from './components/Clock/Clock';
+// import Clock from './components/Clock/Clock';
 // import PokemonView from './views/PokemonView';
+// import SkipEffectOnFirstRender from './components/SkipEffectOnFirstRender';
+import Friends from './Friends';
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -28,7 +30,10 @@ export default function App() {
     <div style={containerStyles}>
       {/* <Counter /> */}
       {/* <SignupForm /> */}
-      <Clock />
+      {/* <Clock /> */}
+      {/* <SkipEffectOnFirstRender /> */}
+      {/* <PokemonView /> */}
+      <Friends />
     </div>
   );
 }
