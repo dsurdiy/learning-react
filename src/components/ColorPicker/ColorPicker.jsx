@@ -1,30 +1,37 @@
-import { useState } from 'react';
-import styles from './ColorPicker.module.css';
+import { useState, memo } from 'react';
+import classNames from 'classnames';
+import './ColorPicker.css';
 
-export default function ColorPicker({ options }) {
-  const [activeOptionIdx, setActiveOptionIdx] = useState(0);
+function ColorPicker({ options }) {
+  const [activeOptIdx, setActiveOptIdx] = useState(0);
 
-  const { label } = options[activeOptionIdx];
+  const setActiveIdx = index => setActiveOptIdx(index);
 
-  const makeOptionClassName = index => {
-    return index === activeOptionIdx ? styles.activeOption : styles.option;
-  };
+  const makeOptionClassName = index =>
+    classNames('ColorPicker__option', {
+      'ColorPicker__option--active': index === activeOptIdx,
+    });
+
+  const { label } = options[activeOptIdx];
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Color Picker</h2>
+    <div className="ColorPicker">
+      <h2 className="ColorPicker__title">Color Picker</h2>
       <p>Выбран цвет: {label}</p>
       <div>
         {options.map(({ label, color }, index) => (
           <button
             key={label}
-            aria-label={label}
             className={makeOptionClassName(index)}
-            style={{ backgroundColor: color }}
-            onClick={() => setActiveOptionIdx(index)}
+            style={{
+              backgroundColor: color,
+            }}
+            onClick={() => setActiveIdx(index)}
           ></button>
         ))}
       </div>
     </div>
   );
 }
+
+export default memo(ColorPicker);
