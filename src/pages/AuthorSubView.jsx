@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useFetchAuthor } from '../hooks/useFetchAuthor';
 
-export const AuthorSubView = () => {
+function AuthorSubView() {
   const author = useFetchAuthor();
 
   return (
@@ -22,4 +22,6 @@ export const AuthorSubView = () => {
       )}
     </>
   );
-};
+}
+
+export default AuthorSubView;

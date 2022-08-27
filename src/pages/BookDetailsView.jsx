@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { PageHeading } from '../components/PageHeading/PageHeading';
 import * as bookShelfAPI from '../services/bookshelf-api';
 
-export const BookDetailsView = () => {
+function BookDetailsView() {
   const { bookId } = useParams();
   const [book, setBook] = useState(null);
 
@@ -25,4 +25,6 @@ export const BookDetailsView = () => {
       )}
     </>
   );
-};
+}
+
+export default BookDetailsView;

@@ -1,6 +1,6 @@
 import { PageHeading } from '../components/PageHeading/PageHeading';
 
-export const HomeView = () => {
+function HomeView() {
   return (
     <>
       <PageHeading text="Ласкаво просимо" />
@@ -62,4 +62,6 @@ export const HomeView = () => {
       </p>
     </>
   );
-};
+}
+
+export default HomeView;

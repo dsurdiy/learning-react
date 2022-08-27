@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PageHeading } from '../components/PageHeading/PageHeading';
 import * as booksShelfAPI from '../services/bookshelf-api';
 
-export const BooksView = () => {
-  // const { bookId } = useParams();
-  // console.log(bookId);
-
+function BooksView() {
   const [books, setBooks] = useState(null);
 
   useEffect(() => {
@@ -28,4 +25,6 @@ export const BooksView = () => {
       )}
     </>
   );
-};
+}
+
+export default BooksView;
