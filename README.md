@@ -1,15 +1,28 @@
-# react-21-22
+# Admin panel workshop
 
-- Параметры адресной строки c useLocation
-- Программная навигация с useHistory
-- Повторное использование кода
-- Разделение кода
-  - Вкладка Coverage
-  - Динамический импорт модулей
-    - React.lazy()
-    - Webpack magic comments `import('путь' /* webpackChunkName: "имя" */)`
-    - React.Suspense и fallback
+- Разбираем макет
+  - Проектируем маршруты и компоненты
+- Компонент **Layout**
+- Сайдбар **AppBar**
+  - Главная навигация **Nav**
+    - Список элементов навигации
+    - Используем **NavLink**
+    - Активные ссылки
+- Страница продаж, компонент **Sales**
+  - Шапка с навигацией
+  - Список инвойсов в сайдбаре
+- Компонент деталей инвойса **InvoiceDetails**
+  - Динамические параметры и **useParams**
 
-## Допмат
+## Маршруты
 
-- [Предварительная загрузка ссылок](https://web.dev/quicklink/)
+- / Layout
+  - /dashboard
+  - /sales Sales
+    - /analytics
+    - /invoices Invoices
+      - /:invoiceId InvoiceDetails
+    - /deposits
+  - /reports
+  - /feedback
+  - /customers
