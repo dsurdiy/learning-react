@@ -1,16 +1,15 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Box } from './Box';
-import { AppBar } from './AppBar';
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../redux/store";
 
 export const Layout = () => {
-  return (
-    <Box display="grid" gridTemplateColumns="200px 1fr">
-      <AppBar />
+  const value = useSelector((state) => state.myValue);
+  const dispatch = useDispatch();
 
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-    </Box>
+  return (
+    <div>
+      {value}
+      <button onClick={() => dispatch(increment(100))}>Increment</button>
+      <button onClick={() => dispatch(decrement(50))}>Decrement</button>
+    </div>
   );
 };
