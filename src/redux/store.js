@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { timer } from "./timerReducer";
+import { configureStore } from '@reduxjs/toolkit';
+import booksReducer from './books/booksReducer';
 
 export const store = configureStore({
   reducer: {
-    timer,
+    books: booksReducer,
   },
 });
