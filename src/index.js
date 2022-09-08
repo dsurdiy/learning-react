@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
-import App from './App';
-import 'modern-normalize/modern-normalize.css';
-import './index.css';
-import 'react-toastify/dist/ReactToastify.css';
+import { store } from 'redux/store';
+import { App } from './components/App';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
@@ -16,5 +14,4 @@ ReactDOM.render(
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
 );
