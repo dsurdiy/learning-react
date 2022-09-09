@@ -11,10 +11,6 @@ export const HomePage = () => {
     },
   );
 
-  console.log('data: ', data);
-  console.log('error: ', error);
-  console.log('isFetching: ', isFetching);
-
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
