@@ -1,18 +1,23 @@
-import { Toaster } from 'react-hot-toast';
-import { Routes, Route } from 'react-router-dom';
-import { HomePage } from 'pages/Home';
-import { TodosPage } from 'pages/Todos';
-import { CreateTodoPage } from 'pages/CreateTodo';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { CreateMaterialPage } from 'pages/CreateMaterial';
+import { ListPage } from 'pages/ListPage';
+import { Layout } from './Layout';
+import { NotFoundPage } from 'pages/NotFoundPage';
+import { EditMaterialModal } from 'components/EditMaterialModal/EditMaterialModal';
 
 export const App = () => {
   return (
-    <div>
+    <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/todos" element={<TodosPage />} />
-        <Route path="/todos/create" element={<CreateTodoPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/list" />} />
+          <Route path="create" element={<CreateMaterialPage />} />
+          <Route path="list/*" element={<ListPage />}>
+            <Route path="edit/:materialId" element={<EditMaterialModal />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
-      <Toaster position="top-right" />
-    </div>
+    </>
   );
 };
