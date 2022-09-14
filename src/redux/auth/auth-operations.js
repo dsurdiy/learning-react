@@ -55,6 +55,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     // TODO: Добавить обработку ошибки error.message
   }
 });
+
 /*
  * GET @ /users/current
  * headers:
@@ -71,11 +72,10 @@ const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
 
-    // token.set(persistedToken);
+    token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
       return data;
